@@ -1,16 +1,16 @@
 -- Emp_Details
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (101, 'Amit', 'Accountant', 'Accounts', 2);
+VALUES (101, 'Amit', 'Trainee', 'Accounts', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
 VALUES (102, 'Sumit', 'Accountant', 'Accounts', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (103, 'Ramit', 'Accountant', 'IT', 2);
+VALUES (103, 'Ramit', 'Junior Developer', 'IT', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
 VALUES (104, 'Kapil', 'Accountant', 'Network', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (105, 'Sujata', 'Accountant', 'HR', 1);
+VALUES (105, 'Sujata', 'Human Resource Manager', 'HR', 1);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (106, 'Lavish', 'Accountant', 'IT', 2);
+VALUES (106, 'Lavish', 'Developer', 'IT', 2);
 
 -- Role
 INSERT INTO ROLE (ROLE_ID, ROLE_NAME)
