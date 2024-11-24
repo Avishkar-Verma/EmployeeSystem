@@ -21,19 +21,6 @@ public class TokenService {
 
         return token;
 
-//        Claims claims = Jwts.parser()
-//                .setSigningKey(secretKey)
-//                .parseClaimsJws(token)
-//                .getBody();
-//
-//        TokenDetails tokenDetails = new TokenDetails();
-//        tokenDetails.setToken_Id(((int)tokenDetailsRepository.count())+1);
-//        tokenDetails.setEmployee_Id(employee_id);
-//        tokenDetails.setAuth_Token(token);
-//        tokenDetails.setCreate_Time(new Date());
-//        tokenDetails.setExpire_Time(claims.getExpiration());
-//
-//        tokenDetailsRepository.save(tokenDetails);
     }
 
     private String generateToken(String subject, String secretKey, long expirationTimeInMillis) {
