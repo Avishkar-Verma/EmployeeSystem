@@ -1,7 +1,6 @@
 package com.interview.employeeSystem.services;
 
 import com.interview.employeeSystem.exception.EmployeeSystemException;
-import com.interview.employeeSystem.repository.TokenDetailsRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,11 +13,6 @@ import java.util.Date;
 public class TokenService {
 
     private final String secretKey = "4261656C64756E67K4h56l6h3lkj32h2jk5h6kk7h33k6hs6t3j5g2jG2J4GJ45G2J1G4J4G";
-    private final TokenDetailsRepository tokenDetailsRepository;
-
-    public TokenService(TokenDetailsRepository tokenDetailsRepository) {
-        this.tokenDetailsRepository = tokenDetailsRepository;
-    }
 
     public String createToken(int employeeId) {
 
