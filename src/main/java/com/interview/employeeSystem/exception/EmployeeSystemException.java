@@ -2,13 +2,13 @@ package com.interview.employeeSystem.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class EmployeeSystemException extends RuntimeException{
+public class EmployeeSystemException extends RuntimeException {
 
     private String message;
     private HttpStatus httpStatus;
 
 
-    public EmployeeSystemException(String message,HttpStatus httpStatus) {
+    public EmployeeSystemException(String message, HttpStatus httpStatus) {
         super(message);
         this.message = message;
         this.httpStatus = httpStatus;

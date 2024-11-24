@@ -1,10 +1,7 @@
 package com.interview.employeeSystem.Dto.response;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 @Component

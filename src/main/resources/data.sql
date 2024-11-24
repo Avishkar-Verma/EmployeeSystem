@@ -1,10 +1,10 @@
 -- Emp_Details
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (101, 'Amit','Accountant', 'Accounts', 2);
+VALUES (101, 'Amit', 'Accountant', 'Accounts', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (102, 'Sumit','Accountant', 'Accounts', 2);
+VALUES (102, 'Sumit', 'Accountant', 'Accounts', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
-VALUES (103, 'Ramit','Accountant', 'IT', 2);
+VALUES (103, 'Ramit', 'Accountant', 'IT', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)
 VALUES (104, 'Kapil', 'Accountant', 'Network', 2);
 INSERT INTO Emp_Details (ID, EMPLOYEE_NAME, DESIGNATION, DEPARTMENT, ROLE_ID)

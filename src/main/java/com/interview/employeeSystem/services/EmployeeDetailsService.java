@@ -35,28 +35,27 @@ public class EmployeeDetailsService {
     }
 
     public EmployeeDetailsResponse getEmployeeDetails(int employeeId) throws ExecutionException, InterruptedException {
-        EmployeeDetailsResponse employeeDetailsResponse=new EmployeeDetailsResponse();
+        EmployeeDetailsResponse employeeDetailsResponse = new EmployeeDetailsResponse();
         CompletableFuture<EmployeeDetails> dbCall = CompletableFuture.supplyAsync(
                 () -> {
                     Optional<EmployeeDetails> employeeDetails = employeeDetailsRepository.findById(employeeId);
                     return employeeDetails.orElse(null);
                 });
 
-        CompletableFuture<Integer> thirdPartyApiCall=CompletableFuture.supplyAsync(() ->{
-            Map<String,Integer> queryParam = new HashMap<>();
+        CompletableFuture<Integer> thirdPartyApiCall = CompletableFuture.supplyAsync(() -> {
+            Map<String, Integer> queryParam = new HashMap<>();
             UriComponents builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getEmployeeSalary")
-                    .queryParam("employee_id",employeeId).build();
-            try{
-                ResponseEntity<Object> response= restTemplate.getForEntity(builder.toUriString(),Object.class);
+                    .queryParam("employee_id", employeeId).build();
+            try {
+                ResponseEntity<Object> response = restTemplate.getForEntity(builder.toUriString(), Object.class);
                 return Integer.parseInt(response.getBody().toString());
-            }
-            catch(Exception ex){
+            } catch (Exception ex) {
                 return -1;
             }
         });
-        EmployeeDetails employeeDetails= dbCall.join();
+        EmployeeDetails employeeDetails = dbCall.join();
         int salary = thirdPartyApiCall.join();
-        if(salary==-1 || employeeDetails==null){
+        if (salary == -1 || employeeDetails == null) {
             throw new EmployeeSystemException("Employee details not found", HttpStatus.BAD_REQUEST);
         }
         employeeDetailsResponse.setEmployeeName(employeeDetails.getEmployeeName());
@@ -68,17 +67,17 @@ public class EmployeeDetailsService {
     }
 
     public void checkRoles(int employeeId, int requestEmployeeId) {
-        String role=null;
+        String role = null;
         Optional<EmployeeDetails> employeeDetails = employeeDetailsRepository.findById(requestEmployeeId);
-        if(employeeDetails.isPresent()){
-          Optional<Role> optionalRole=roleRepository.findById(employeeDetails.get().getRole_id());
-          if(optionalRole.isPresent()){
-              role = optionalRole.get().getRole_Name();
-          }
+        if (employeeDetails.isPresent()) {
+            Optional<Role> optionalRole = roleRepository.findById(employeeDetails.get().getRole_id());
+            if (optionalRole.isPresent()) {
+                role = optionalRole.get().getRole_Name();
+            }
         }
 
-        if(!(employeeId==requestEmployeeId || "Admin".equalsIgnoreCase(role))){
-            throw new EmployeeSystemException("You are not allowed to check information of other employee details",HttpStatus.UNAUTHORIZED);
+        if (!(employeeId == requestEmployeeId || "Admin".equalsIgnoreCase(role))) {
+            throw new EmployeeSystemException("You are not allowed to check information of other employee details", HttpStatus.UNAUTHORIZED);
         }
     }
 }

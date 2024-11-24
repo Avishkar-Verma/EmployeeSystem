@@ -2,14 +2,12 @@ package com.interview.employeeSystem.services;
 
 import com.interview.employeeSystem.exception.EmployeeSystemException;
 import com.interview.employeeSystem.repository.TokenDetailsRepository;
-import com.interview.employeeSystem.repository.entity.TokenDetails;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 
 @Service
@@ -24,7 +22,7 @@ public class TokenService {
 
     public String createToken(int employeeId) {
 
-         String token = generateToken(Integer.toString(employeeId), secretKey, 3600000); // 1 hour expiration
+        String token = generateToken(Integer.toString(employeeId), secretKey, 3600000); // 1 hour expiration
         System.out.println("Generated Token: " + token);
 
         return token;

@@ -31,14 +31,13 @@ public class EmployeeDetailsController {
     @GetMapping("getEmployeeDetails")
     public ResponseEntity<Object> getEmployeeDetails(@RequestHeader("token") String token, @RequestParam("employee_id") int employeeId) throws ExecutionException, InterruptedException {
         try {
-            int requestEmployeeId=tokenService.validateToken(token);
-            employeeDetailsService.checkRoles(employeeId,requestEmployeeId);
+            int requestEmployeeId = tokenService.validateToken(token);
+            employeeDetailsService.checkRoles(employeeId, requestEmployeeId);
             EmployeeDetailsResponse employeeDetailsResponse = employeeDetailsService.getEmployeeDetails(employeeId);
             return ResponseEntity.ok(employeeDetailsResponse);
-        }catch (EmployeeSystemException ex){
+        } catch (EmployeeSystemException ex) {
             return ResponseEntity.status(ex.getHttpStatus()).body(ex.getMessage());
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             return ResponseEntity.status(500).body(ex.getMessage());
         }
 
